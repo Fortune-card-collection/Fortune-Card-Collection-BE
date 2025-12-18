@@ -13,13 +13,11 @@ public class HoroscopeController {
 
     private final HoroscopeService horoscopeService;
 
-    // GET /horoscopes → 전체 목록 조회
     @GetMapping
     public List<Horoscope> getAllHoroscopes() {
         return horoscopeService.getAllHoroscopes();
     }
 
-    // GET /horoscopes/{zodiac}/{period}
     @GetMapping("/{zodiac}/{period}")
     public Horoscope getHoroscope(
             @PathVariable String zodiac,

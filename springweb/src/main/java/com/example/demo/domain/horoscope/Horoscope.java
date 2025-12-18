@@ -15,7 +15,7 @@ public class Horoscope {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long horoscopeId;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
