@@ -37,6 +37,7 @@
 * **Selenium**
 * **Crontab** (자동화 스케줄링)
 
+```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffcc00', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#f4f4f4'}}}%%
 graph TD
     User[📱 Client \n Web Frontend] --"HTTPS (Route53 Domain)"--> Nginx
@@ -60,3 +61,4 @@ graph TD
     style SB fill:#8bc34a,stroke:#333,stroke-width:2px,color:white
     style DB fill:#0288d1,stroke:#333,stroke-width:2px,color:white
     style Crawler fill:#ffca28,stroke:#333,stroke-width:2px
+```
