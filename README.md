@@ -37,28 +37,8 @@
 * **Selenium**
 * **Crontab** (자동화 스케줄링)
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffcc00', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#f4f4f4'}}}%%
-graph TD
-    User[📱 Client \n Web Frontend] --"HTTPS (Route53 Domain)"--> Nginx
 
-    subgraph "AWS EC2 Instance (Docker Environment)"
-        Nginx[🛡️ Nginx \n Reverse Proxy / SSL Termination] --"HTTP (localhost:8080)"--> SB[🍃 Spring Boot Server \n Backend API / Security]
-        
-        SB --"JPA (JDBC:3306)"--> DB[(🐬 MySQL Database \n User & Fortune Data)]
-        
-        subgraph "Background Job"
-            Cron[⏰ Crontab Scheduler] --"Triggers Daily (00:00)"--> Crawler[🐍 Python Crawler \n Selenium / Headless Chrome]
-        end
-        Crawler --"Truncate & Insert (TCP:3306)"--> DB
-    end
+## 아키텍처 구조도
 
-    SB --"REST API (HTTPS)"--> OpenAI[🧠 OpenAI API \n GPT-4o-mini]
-    SB --"OAuth 2.0 (HTTPS)"--> Kakao[💬 Kakao Login API]
-    Crawler --"Scraping (HTTPS)"--> Daum[🌐 Daum Search \n Fortune Data Source]
+<img width="1460" height="1324" alt="be-at" src="https://github.com/user-attachments/assets/896e47e9-6d76-4218-b511-16d31d8601dc" />
 
-    style Nginx fill:#66bb6a,stroke:#333,stroke-width:2px,color:white
-    style SB fill:#8bc34a,stroke:#333,stroke-width:2px,color:white
-    style DB fill:#0288d1,stroke:#333,stroke-width:2px,color:white
-    style Crawler fill:#ffca28,stroke:#333,stroke-width:2px
-```
